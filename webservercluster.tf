@@ -1,6 +1,8 @@
 provider "aws" {
   region  = var.region
   version = "~>2.0"
+  access_key = "abc123"
+  secret_key = "abc123"
 }
 
 # vpc module
@@ -14,9 +16,9 @@ module "vpc_webcluster" {
 terraform {
   backend "s3" {
 # bucket name has to be replace by your own
-    bucket = "fopingncompagny77-dev-tfremotestate"
+    bucket = "name of your s3 bucket for terraform state file"
     key    = "terraform.tfstate"
-    region = "us-east-1"
+    region = "region of the bucket fi=or the terraform state file"
   }
 }
 
@@ -52,7 +54,7 @@ resource "aws_instance" "web" {
     host        = coalesce(self.public_ip, self.private_ip)
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("C:/Users/fopingn/.ssh/learntfkey.pem")
+    private_key = file("path_of_private_key/name_key")
   }
 
   provisioner "file" {

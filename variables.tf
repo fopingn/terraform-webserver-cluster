@@ -6,7 +6,7 @@ variable "region" {
 
 variable "key_name" {
   description = "The AWS key pair to use for resources. This have to be change to match your own key"
-  default     = "learntfkey"
+  default     = "name_key"
 }
 
 variable "instance_ips" {
